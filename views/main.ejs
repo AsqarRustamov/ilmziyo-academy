@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ilm Ziyo Academy</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/scripts/showdown.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <img src="/assets/logo.svg" alt="">
+        </div>
+        <ul class="nav">
+            <li class="nav-item"><a class="nav-link" href="#about-us">Biz haqimizda</a></li>
+            <li class="nav-item"><a class="nav-link" href="#programs">Dasturlar</a></li>
+            <li class="nav-item"><a class="nav-link" href="#news">Yangiliklar</a></li>
+            <li class="nav-item"><a class="nav-link" href="#contact-us">Biz bilan bog'laning</a></li>
+        </ul>
+        <a href="#" class="btn">
+            Ariza qoldirish
+        </a>
+    </header>
+
+    <section id="about-us">
+        <div class="container">
+            <div class="about-title">
+                <div class="title">
+                    Farzandingiz uchun eng zo`r mental arifmetika kurslari
+                </div>
+                <div class="sub-title">
+                    Mental arifmetika qurslari
+                </div>
+            </div>
+            <div class="images">
+                <img src="assets/idea.png" alt="" id="idea">
+                <img src="assets/strong.png" alt="" id="strong">
+                <img src="assets/pair.png" alt="" id="pair">
+            </div>
+        </div>
+    </section>
+
+    <section id="programs">
+        <div class="container">
+            <h1 class="section-title"> Dasturlar </h1>
+            <div class="program-list">
+                <% for(const program of programs) {%>
+                <div class="program">
+                    <div class="border"></div>
+                    <div class="content">
+                        <div class="title-box <%= program.color %>">
+                            <h3 class="title blue"> <%= program.name %> </h3>
+                        </div>
+                        <div class="time-details"> <%= program.duration %> </div>
+                        <div class="description">
+                            <%= program.description %>
+                        </div>
+                        <div class="price">
+                            <%= program.price %>
+                        </div>
+                        <a href="/program/<%=program.id%>" class="btn">
+                            Tanlash
+                        </a>
+                    </div>
+                </div>
+                <% } %>                    
+            </div>
+        </div>
+    </section>
+
+    <section id="news">
+        <div class="container">
+            <h1 class="section-title"> Yangiliklar </h1>
+            <div class="flex-column">
+                <% if (mainNews) { %>
+                <div class="horiz-news">
+                    <div class="horiz-news-image">
+                        <img src="/public/<%=mainNews.poster %>" />
+                    </div>
+                    <div class="horiz-news-content">
+                        <div class="horiz-news-title"><%= mainNews.title %></div>
+                        <div class="horiz-news-date"><%= mainNews.date.toDateString() %></div>
+                        <div class="horiz-news-text">
+                            <%- mainNews.content %>
+                        </div>
+                        <a href="/news/<%=mainNews.id%>" class="btn"> Davomini o'qish </a>
+                    </div>
+                </div>
+                <% } %>
+                <div class="news-list">
+                    <% news.forEach(news => { %>
+                        <div class="news">
+                            <div class="news-border"></div>
+                            <div class="news-content">
+                                <div class="news-image">
+                                    <img src="/public/<%=news.poster%>" />
+                                </div>
+                                <div class="news-title"><%= news.title %></div>
+                                <div class="news-date"><%= news.date.toDateString() %></div>
+                                <div class="news-text">
+                                    <%- news.content %>
+                                </div>
+                                <a href="/news/<%= news.id %>" class="btn"> Davomini o'qish </a>
+                            </div>
+                        </div>
+                    <% }) %>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact-us">
+        <div class="container">
+            <h1 class="section-title"> Biz bilan bog`laning </h1>
+            <div class="flex-row">
+                <!-- 
+                    fullName: string
+                    candidateFullName: string
+                    ageOrClass: string
+                    phone: string
+                    programId: number 
+                -->
+                <form class="contact-form" action="/submit" method="post" enctype="application/json">
+                    <h1 class="contact-title"> Ariza qoldirish </h1>
+                    <input type="text" class="input-text" name="fullName" placeholder="Ism sharifingiz" required>
+                    <input type="text" class="input-text" name="candidateFullName" placeholder="Bolangiz ism sharifi" required>
+                    <input type="text" class="input-text" name="ageOrClass" placeholder="Yosh/sinf" required>
+                    <input type="text" class="input-text" name="phone" placeholder="Telefon raqam" required>
+                    <select class="input-text" name="programId" placeholder="Dasturni tanlang" required>
+                        <% if (programs.length > 0) { %>
+                            <option disabled selected> Tanlang </option>
+                        <% } %>
+                        <% for(let program of programs) { %>
+                            <option value="<%=program.id%>"><%=program.name%></option>
+                        <% } %>
+                    </select>
+                    <button type="submit" class="btn"> Ariza qoldirish </button>
+                </form>
+                <div class="social">
+                    <h1 class="contact-title"> Boglanish </h1>
+                    <a href="tel:<%=contacts.phone%>" class="social-item">
+                        <div class="icon">
+                            <img src="assets/icons/phone.svg" alt="">
+                        </div>
+                        <div class="text"><%=contacts.phone%></div>
+                    </a>
+                    <a href="<%=contacts.telegram%>" class="social-item">
+                        <div class="icon">
+                            <img src="assets/icons/telegram.svg" alt="">
+                        </div>
+                        <div class="text"><%=contacts.telegram%></div>
+                    </a>
+                    <a href="<%=contacts.instagram%>" class="social-item">
+                        <div class="icon">
+                            <img src="assets/icons/instagram.svg" alt="">
+                        </div>
+                        <div class="text"><%=contacts.instagram%></div>
+                    </a>
+                    <a class="social-item">
+                        <div class="icon">
+                            <img src="assets/icons/map-pin.svg" alt="">
+                        </div>
+                        <div class="text"><%=contacts.address%></div>
+                    </a>
+                    <%-contacts.locationMap%>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer> Copyright Ilmziyo 2024 </footer>
+</body>
+</html>

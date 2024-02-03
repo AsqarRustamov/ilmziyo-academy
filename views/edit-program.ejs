@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.js"></script>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/admin.css">
+    <link rel="stylesheet" href="/meditor/dist/simplemde.min.css">
+    <script src="/meditor/dist/simplemde.min.js"></script>
+    <script src="/scripts/showdown.min.js"></script>
+    <title>Ziyo Academy | Admin</title>
+</head>
+<body>
+    <h2 class="ui dividing header flex-between" style="padding: 20px;">
+        <div style="display: flex; gap: 16px;">
+            <a class="ui button" href="/admin/programs">
+                <i class="arrow left icon"></i>
+            </a>
+            <% if (mode=="create" ) { %>
+                Create program
+                <% } else { %>
+                    Edit program
+                    <% } %>
+        </div>
+        <a href="/admin/logout" class="ui button">
+            <i class="icon sign-out"></i>
+        </a>
+    </h2>
+    <form method="post" enctype="application/json" action="<%=(mode=="create") ? "/admin/programs" : "/admin/programs/" + id + "/update"%>" class="container" style="width: 90%; margin: auto;">
+        <div style="display: flex; flex-direction: column; gap: 10px; padding-bottom: 20px;">
+            <h4> Name </h4>
+            <div class="ui input">
+                <input type="text" name="name" class="ui input" id="name-input" placeholder="Name" value="<%=program.name ?? "" %>">
+            </div>
+            <h4> Color </h4>
+            <div class="ui input">
+                <input type="text" name="color" class="ui input" id="color-input" placeholder="Color"
+                    value="<%=program.color ?? "" %>">
+            </div>
+            <h4> Duration </h4>
+            <div class="ui input">
+                <input type="text" name="duration" class="ui input" id="name-input" placeholder="Duration" value="<%=program.duration%>">
+            </div>
+            <h4> Description </h4>
+            <div class="ui input">
+                <input type="text" name="description" class="ui input" id="name-input" placeholder="Description" value="<%=program.description%>">
+            </div>
+            <h4> Price </h4>
+            <div class="ui input">
+                <input type="text" name="price" class="ui input" id="name-input" placeholder="Price" value="<%=program.price%>">
+            </div>
+            <h4> Content </h4>
+            <div class="ui input">
+                <input type="text" name="content" class="ui input" id="name-input" placeholder="Content" value="<%=program.content%>">
+            </div>
+        </div>
+        <div style="padding: 20px 0;">
+            <button id="save" type="submit" class="ui primary button"> Save </button>
+        </div>
+    </form>
+</body>
+</html>

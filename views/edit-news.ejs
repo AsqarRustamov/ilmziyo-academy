@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.js"></script>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/admin.css">
+    <link rel="stylesheet" href="/meditor/dist/simplemde.min.css">
+    <script src="/meditor/dist/simplemde.min.js"></script>
+    <script src="/scripts/showdown.min.js"></script>
+    <title>Ziyo Academy | Admin</title>
+</head>
+
+<metadata mode="<%=mode%>" id="<%=id ?? undefined%>" title="<%=title ?? ""%>"><%=content ?? ""%></metadata>
+
+<body>
+    <h2 class="ui dividing header flex-between" style="padding: 20px;">
+        <div style="display: flex; gap: 16px;">
+            <a class="ui button" href="/admin/news"> 
+                <i class="arrow left icon"></i>
+            </a>
+            <% if (mode == "create") { %>
+                Create news
+            <% } else { %> 
+                Edit news
+            <% } %>
+        </div>   
+        <a href="/admin/logout" class="ui button">
+            <i class="icon sign-out"></i>
+        </a>
+    </h2>
+    <div class="container" style="width: 90%; margin: auto;">
+        <div style="display: flex; flex-direction: column; gap: 10px; padding-bottom: 20px;">
+            <h4> Select poster </h4>
+            <div class="ui input">
+                <input id="file-input" class="ui input" type="file" accept="image/*" />
+            </div>
+            <h4> Title </h4>
+            <div class="ui input">
+                <input type="text" class="ui input" id="title-input" placeholder="Title">
+            </div>  
+        </div>
+        <textarea name="" id="textarea" style="width: 100%; height: 100%;"></textarea>
+        <div style="padding: 20px 0;">
+            <button id="save" class="ui primary button"> Save </button>
+        </div>
+    </div>
+    <div id="invisble" style="display: none;">
+    </div>
+</body>
+<script src="/scripts/edit-news.js"></script>
+</html>

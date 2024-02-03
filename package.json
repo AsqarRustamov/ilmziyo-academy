@@ -1,0 +1,63 @@
+{
+    "name": "@axcapital/mobile-dashboard",
+    "version": "0.0.1",
+    "description": "Mobile Dashboard",
+    "main": "index.js",
+    "scripts": {
+        "dev": "nodemon src/index.ts",
+        "start": "node -r module-alias/register lib/index.js",
+        "build": "tsc",
+        "deploy": "pm2 restart host-list",
+        "postinstall": "npx prisma db push"
+    },
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "@types/bcrypt": "^5.0.0",
+        "@types/cors": "^2.8.12",
+        "@types/dotenv": "^8.2.0",
+        "@types/express": "^4.17.14",
+        "@types/fs-extra": "^11.0.1",
+        "@types/jsonwebtoken": "^8.5.9",
+        "@types/multer": "^1.4.7",
+        "@types/node": "^18.8.1",
+        "prisma": "^4.4.0",
+        "tsconfig-paths": "^4.1.0"
+    },
+    "dependencies": {
+        "@prisma/client": "^4.4.0",
+        "@types/cookie-session": "^2.0.48",
+        "@types/redis": "^4.0.11",
+        "axios": "^1.5.1",
+        "bcrypt": "^5.0.1",
+        "cookie-session": "^2.1.0",
+        "cors": "^2.8.5",
+        "dotenv": "^16.0.3",
+        "ejs": "^3.1.5",
+        "express": "^4.18.1",
+        "express-ejs-layouts": "^2.5.1",
+        "express-joi-validation": "^5.0.1",
+        "fetch": "^1.1.0",
+        "fs-extra": "^11.1.0",
+        "helmet": "^7.0.0",
+        "joi": "^17.11.0",
+        "jsonwebtoken": "^8.5.1",
+        "module-alias": "^2.2.2",
+        "multer": "^1.4.5-lts.1",
+        "nanoid": "^3.3.4",
+        "ts-node": "^10.9.1",
+        "tsconfig-paths": "^4.1.0",
+        "typescript": "^4.8.4",
+        "xml2json": "^0.12.0"
+    },
+    "_moduleAliases": {
+        "@configs": "lib/configs",
+        "@controllers": "lib/controllers",
+        "@middlewares": "lib/middlewares",
+        "@models": "lib/models",
+        "@routes": "lib/routes",
+        "@schemas": "lib/schemas",
+        "@services": "lib/services",
+        "@utils": "lib/utils"
+    }
+}

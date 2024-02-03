@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.js"></script>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="admin.css">
+    <title>Ziyo Academy | Admin</title>
+</head>
+
+<body>
+    <div class="container fullscreen center">
+        <form action="/login" method="post">
+            <div class="ui card">
+                <div class="content">
+                    <p class="header">Login</p>
+                    <div class="ui form">
+                        <div class="field">
+                            <label>Username</label>
+                            <input type="text" name="username" placeholder="admin">
+                        </div>
+                        <div class="field">
+                            <label>Password</label>
+                            <input type="password" name="password" placeholder="password">
+                        </div>
+                    </div>
+                </div>
+                <div class="extra content">
+                    <button type="submit" class="ui button">
+                        Login
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

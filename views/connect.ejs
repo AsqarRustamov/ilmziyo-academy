@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.js"></script>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/admin.css">
+    <title>Ziyo Academy | Admin</title>
+</head>
+
+<body>
+    <h2 class="ui dividing header flex-between" style="padding: 20px;">
+        Ziyo Academy | Admin   
+
+        <a href="/admin/logout" class="ui button">
+            <i class="icon sign-out"></i>
+        </a>
+    </h2>
+    <div class="container" style="width: 90%; margin: auto;">
+        <div class="flex">
+            <div class="ui secondary vertical menu">
+                <a class="item" href="/admin/applications">
+                    Applications
+                </a>
+                <a class=" item" href="/admin/news">
+                    News
+                </a>
+                <a class="item" href="/admin/programs">
+                    Programs
+                </a>
+                <a class="active item" href="/admin/contacts">
+                    Contacts
+                </a>
+            </div>
+
+            <div class="content">
+                <form method="post" enctype="application/json" action="/admin/contacts" class="container" style="width: 90%; margin: auto;">
+                    <div style="display: flex; flex-direction: column; gap: 10px; padding-bottom: 20px;">
+                        <h4> Phone </h4>
+                        <div class="ui input">
+                            <input type="text" name="phone" class="ui input" id="name-input" placeholder="Phone" value="<%=contacts.phone ?? "" %>">
+                        </div>
+                        <h4> Telegram </h4>
+                        <div class="ui input">
+                            <input type="text" name="telegram" class="ui input" id="color-input" placeholder="Telegram"
+                                value="<%=contacts.telegram ?? "" %>">
+                        </div>
+                        <h4> Instagram </h4>
+                        <div class="ui input">
+                            <input type="text" name="instagram" class="ui input" id="name-input" placeholder="Instagram" value="<%=contacts.instagram%>">
+                        </div>
+                        <h4> Address </h4>
+                        <div class="ui input">
+                            <input type="text" name="address" class="ui input" id="name-input" placeholder="Address" value="<%=contacts.address%>">
+                        </div>
+                        <h4> Location embend map </h4>
+                        <div class="ui input">
+                            <input type="text" name="location" class="ui input" id="name-input" placeholder="Map Address" value="<%=contacts.locationMap%>">
+                        </div>
+                    </div>
+                    <div style="padding: 20px 0;">
+                        <button id="save" type="submit" class="ui primary button"> Save </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.js"></script>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/admin.css">
+    <title>Ziyo Academy | Admin</title>
+</head>
+
+<body>
+    <h2 class="ui dividing header flex-between" style="padding: 20px;">
+        Ziyo Academy | Admin   
+        <a href="/admin/logout" class="ui button">
+            <i class="icon sign-out"></i>
+        </a>
+    </h2>
+    <div class="container" style="width: 90%; margin: auto;">
+        <div class="flex">
+            <div class="ui secondary vertical menu">
+                <a class="item" href="/admin/applications">
+                    Applications
+                </a>
+                <a class=" item" href="/admin/news">
+                    News
+                </a>
+                <a class="active item" href="/admin/programs">
+                    Programs
+                </a>
+                <a class="item" href="/admin/contacts">
+                    Contacts
+                </a>
+            </div>
+
+            <div class="content">
+                <div class="right aligned"> <a href="/admin/programs/create" class="ui primary button"> Add Program </a> </div>
+                <table class="ui celled table">
+                    <thead>
+                      <tr><th>ID</th>
+                      <th>Name</th>
+                      <th>Color</th>
+                      <th>Duration</th>
+                      <th>Description</th>
+                      <th>Price</th>
+                      <th>Applications</th>
+                      <th></th>
+                    </tr></thead>
+                    <tbody>
+                        <% for( let program of programs) { %>
+                            <tr>
+                                <td data-label="ID"><%= program.id %></td>
+                                <td data-label="Name"><%= program.name %></td>
+                                <td data-label="Color"> <span class="program-color" style="background-color: <%= program.color %>;"> </span> </td>
+                                <td data-label="Duration"><%= program.duration %></td>
+                                <td data-label="Description"><%= program.description %></td>
+                                <td data-label="Price"><%= program.price %></td>
+                                <td data-label="Applications"><%= program._count.applications %></td>
+                                <td data-label="">
+                                    <a href="/admin/programs/<%=program.id%>/edit" class="ui icon button">
+                                        <i class="edit outline icon"></i>
+                                    </a>
+                                    <a href="/admin/programs/<%=program.id%>/delete"  class="ui icon button">
+                                        <i class="trash alternate outline icon"></i>
+                                    </a>
+                                    <a href="/#programs"  class="ui icon button">
+                                        <i class="eye icon"></i>
+                                    </a>
+                                </td>
+                              </tr>
+                        <% } %>
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
